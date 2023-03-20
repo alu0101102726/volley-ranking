@@ -57,8 +57,20 @@ body {
     margin-bottom: 3%;
   }
 
-  #create-acct {
-    display: none;
+  .login-container-box.active #main {
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+  }
+
+  .login-container-box.active #create-acct {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+
+  .login-container-box #create-acct {
+    opacity: 0;
+    transition: opacity 0.09s ease;
   }
 
   button:hover {

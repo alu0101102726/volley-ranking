@@ -1,14 +1,11 @@
-let loginForm = document.getElementById("main");
-let registerForm = document.getElementById("create-acct");
+const loginForm = document.getElementById("main");
+const registerForm = document.getElementById("create-acct");
+const formContainer = document.getElementById("login-container-box");
 
-function showRegister() {
-    loginForm.display = none;
-    registerForm.display = block;
-}
+registerForm.addEventListener("click", ( )=>{
+    formContainer.classList.add("active");
+})
 
-function showLogin() {
-    loginForm.display = block;
-    registerForm.display = none;
-}
-
-export default {showRegister, showLogin}
+loginForm.addEventListener("click", ( )=>{
+    formContainer.classList.remove("active");
+})
