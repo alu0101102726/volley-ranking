@@ -1,0 +1,16 @@
+{
+  "name": "volleyrank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Carlos Díaz Calzadilla",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase": "^9.18.0",
+    "path": "^0.12.7"
+  }
+}
