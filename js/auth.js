@@ -10,3 +10,5 @@ function showLogin() {
     loginForm.display = block;
     registerForm.display = none;
 }
+
+export default {showRegister, showLogin}
