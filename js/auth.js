@@ -7,5 +7,6 @@ registerForm.addEventListener("click", ( )=>{
 })
 
 loginForm.addEventListener("click", ( )=>{
+    console.log(formContainer);
     formContainer.classList.remove("active");
 })
