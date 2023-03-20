@@ -15,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="./css/topnav.css" />
     <link rel="stylesheet" type="text/css" href="./css/login.css" />
   </head>
-  <body>
+  <body>    
+    <script type="module" src="./js/auth.js"></script>
 
 
     <div class="topnav">
@@ -40,7 +41,7 @@
           <input id = "password" type = "password" placeholder = "Password"></input>
           <button id = "submit" value="login">Submit</button>
           <p><span>or</span></p>
-          <button id = "sign-up" onClick="showSignUp()">Sign Up</button>
+          <button id = "sign-up" onClick="showRegister()">Sign Up</button>
       </div>
       
       <div id = "create-acct">
@@ -51,11 +52,10 @@
           <input id = "confirm-password-signup" type = "password" placeholder = "Confirm Password *"></input>
           <input type="file" id = "image-upload" onclick=""></input>
           <button id = "create-acct-btn" onClick="createAccount()">Create Account</button>
-          <button id = "return-btn">Return to Login</button>
+          <button id = "return-btn" onClick="showLogin()">Return to Login</button>
       </div>
 
     </div>
   </body>
   <!-- JavaScript necesarios-->
-  <script type="module" src="./js/auth.js"></script>
   </html>
