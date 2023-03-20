@@ -1,6 +1,6 @@
-const loginForm = document.getElementById("main");
-const registerForm = document.getElementById("create-acct");
-const formContainer = document.getElementsByClassName("login-container-box");
+const loginForm = document.querySelector("#main");
+const registerForm = document.querySelector("#create-acct");
+const formContainer = document.querySelector(",login-container-box");
 
 registerForm.addEventListener("click", ( )=>{
     console.log(formContainer);
