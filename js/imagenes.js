@@ -1,24 +1,21 @@
+
 const cards = document.querySelectorAll('.card');
 const addCard = document.querySelector('#addCard');
 const endpoint = "https://drive.google.com/file/d/1iAkPvyUfTrrNPaL71oNMAIbTm-b5ehn1";
 const fileURL = "https://drive.google.com/file/d/1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk"
 
 async function getInformation() {  
-  let newFileURL = "https://drive.google.com/uc?export=view&id=1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk"
+  const usersImpt = await import("../public/users.js")
+  const userdata = usersImpt.default.data
   const bank = document.querySelector('#banco');
-  let image = new Image(100,85);
-  image.src = newFileURL;
-  image.style.pointerEvents = 'none';
-  image.alt = "Carlos";
-  let card = createCard(image);
-  bank.appendChild(card);
-
-  let image2 = new Image(100,85);
-  image2.src = "https://drive.google.com/uc?export=view&id=1iAkPvyUfTrrNPaL71oNMAIbTm-b5ehn1";
-  image2.style.pointerEvents = 'none';
-  image2.alt = "Edu";
-  let card2 = createCard(image2);
-  bank.appendChild(card2);
+  userdata.forEach((user, index) => {  
+    let image = new Image(100,85);
+    image.src = user.image;
+    image.style.pointerEvents = 'none';
+    image.alt = user.name;
+    let card = createCard(image);
+    bank.appendChild(card);
+  });
 }
 
 /* Lógica de la imágen */

@@ -25,14 +25,18 @@ rows.forEach((row, index) => {
 
 function modifyJSON(newJSON) {
   let endpoint = "http://localhost:3000/poll";
+  let jsonString = JSON.stringify(newJSON);
+  console.log(jsonString);
   fetch(endpoint, {
-    method: "post",
-    body: JSON.stringify(newJSON),
-    mode: 'cors', // <---
+    method: "POST", // <---
     headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
-  }).then(() => {
+      "access-control-allow-origin": "*",
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': '*',
+      'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    body: JSON.stringify(newJSON)
     
   })
 }
