@@ -38,6 +38,7 @@ class Poll {
                     fetch(this.endpoint, {
                         method: "post",
                         body: `add=${ option.label }`,
+                        mode: 'cors', // <---
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded"
                         }
