@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index"/>
     <meta http-equiv="cache-control" content="no-cache"/>
-    <meta name="author" content="ENTREUNOSYCEROS" />
     <meta name="description" content="Crea tu propia Tier List con un poco de html, css y Javascript para utilizar el local o en un servidor"/>
     <meta name="keywords" content="tier list, Javascript, HTML, CSS, entreunosyceros"/>
     <title>Tier List</title>
@@ -14,48 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="stylesheet" type="text/css" href="./css/topnav.css" />
+    <script src="./js/main.js" defer></script>
   </head>
   <body>
-
-
-    <div class="topnav">
-      <a class="active" href="index.html">Semanal</a>
-      <a href="./Monthly.html">Mensual</a>
-      <div class="login-container">        
-        <a href="Auth.html">Autenticarse</a>
-      </div>
-    </div>
     
     <label class="headerContainer">
       <h1 class="title">Ranking Volley Semanal</h1>
     </label>
-<!--Div anidados para mostrar cada una de las líneas-->
-    <div id="board">
-      <div class="row">
-        <div class="label">S</div>
-      </div>
-      <div class="row">
-        <div class="label">A</div>
-      </div>
-      <div class="row">
-        <div class="label">B</div>
-      </div>
-      <div class="row">
-        <div class="label">C</div>
-      </div>
-      <div class="row">
-        <div class="label">D</div>
-      </div>
-      <div class="row">
-        <div class="label">E</div>
-      </div>
+
+    <div class="poll">
+
     </div>
-    <!--botón y div para añadir imágenes-->
-    <button id="addCard" title="Añadir imagen">Juadores disponibles</button>
-    <div id="banco"></div>
   </body>
-  <!-- JavaScript necesarios-->
-  <script src="./js/lineas.js"></script>
-  <script src="./js/imagenes.js"></script>
-  <script src="./js/banco.js"></script>
   </html>

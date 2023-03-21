@@ -12,81 +12,48 @@ body {
     justify-content: center;
     align-items: center;
   }
- 
-  #addCard {
-    font-family: 'Kalam', cursive;
-    background: none;
-    border: none;
-    color: #EEE5E9;
-    font-size: 50px;
-  }
-  
-  #board {
+
+.poll {
+    width: 400px;
+    background-color: #FAF3DD;
+    padding: 1.5rem;
+    margin: 50px;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.poll__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.poll__option:hover {
+    cursor: pointer;
+}
+
+.poll__option:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.poll__option--selected .poll__option-fill {
+    background: #009578;
+}
+
+.poll__option--selected .poll__option-info {
+    font-weight: bold;
+}
+
+.poll__option-fill {
+    width: 50%;
+    height: 10px;
+    background: #84C0FE;
+}
+
+.poll__option-info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 5px;
-    width: 80vw;
-    height: 70vh;
-    background-color: #EEE5E9;
-  }
-  
-  .row {
-    display: flex;
-    width: 100%;
-    height: 85px;  
-    background-color: black;
-    border-style: solid;
-    border-width: 3px;
-    border-color: #EEE5E9;
-  }
-  
-  .label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100px;
-  }
-  
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85px;
-    width: 100px;
-  }
-  
-  #banco {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80vw;
-    height: 300px;
-    background-color: black;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #EEE5E9;
-    margin-bottom: 20px;
-  }
-  
-  
-  @media (max-width: 700px) {
-  img, .card {
-  
-      height: 100%;
-      width: 100px;
-  
-    }
-    .label {
-  
-      height: 100%;
-      width: 110px;
-  
-    }
-    #board {
-      width: 80vw;
-      height: 100vh;
-  
-    }
-  }
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+}
