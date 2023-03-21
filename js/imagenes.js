@@ -1,18 +1,24 @@
 const cards = document.querySelectorAll('.card');
 const addCard = document.querySelector('#addCard');
-const endpoint = "https://drive.google.com/file/d/1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk/view?usp=share_link";
+const endpoint = "https://drive.google.com/file/d/1iAkPvyUfTrrNPaL71oNMAIbTm-b5ehn1";
 const fileURL = "https://drive.google.com/file/d/1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk"
 
 async function getInformation() {  
   let newFileURL = "https://drive.google.com/uc?export=view&id=1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk"
   const bank = document.querySelector('#banco');
-  var image = new Image(100,85);
+  let image = new Image(100,85);
   image.src = newFileURL;
   image.style.pointerEvents = 'none';
-  const card = createCard(image);
-  console.log(card);
+  image.alt = "Carlos";
+  let card = createCard(image);
   bank.appendChild(card);
-  console.log(bank);
+
+  let image2 = new Image(100,85);
+  image2.src = "https://drive.google.com/uc?export=view&id=1iAkPvyUfTrrNPaL71oNMAIbTm-b5ehn1";
+  image2.style.pointerEvents = 'none';
+  image2.alt = "Edu";
+  let card2 = createCard(image2);
+  bank.appendChild(card2);
 }
 
 /* Lógica de la imágen */

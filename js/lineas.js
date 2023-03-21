@@ -10,10 +10,8 @@ const onDragOver = (event) => {
 
 const onDrop = (event) => {
   event.preventDefault();
-  console.log(event.dataTransfer)
   const draggedCardId = event.dataTransfer.getData('id');
   const draggedCard = document.getElementById(draggedCardId);
-  console.log(draggedCardId)
   event.target.appendChild(draggedCard);
   console.log('Elemento arrastrado');
 }
@@ -25,13 +23,26 @@ rows.forEach((row, index) => {
   row.ondrop = onDrop;
 })
 
+function modifyJSON(newJSON) {
+  let endpoint = "http://localhost:3000/poll";
+  fetch(endpoint, {
+    method: "post",
+    body: JSON.stringify(newJSON),
+    mode: 'cors', // <---
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+  }).then(() => {
+    
+  })
+}
+
 function sendInformation() {
   rows.forEach((row, index) => {
     let rowInfo = row.childNodes;
     let tier = rowInfo[1].innerText;
-    console.log(rowInfo);
     for(let i = 3; i < rowInfo.length; i++) {
-      let currentCardImage = rowInfo[i].childNodes[0].currentSrc;
+      let currentCardImage = rowInfo[i].childNodes[0];
       let score = 0;
       switch(tier) {
         case "S":
@@ -53,7 +64,11 @@ function sendInformation() {
           score = 1;
         break;
       }
+      JSONresult[`${currentCardImage.alt}`] = score;
+
     }
-    
-  })
+  }) 
+  console.log(JSONresult);   
+
+  modifyJSON(JSONresult);
 }
