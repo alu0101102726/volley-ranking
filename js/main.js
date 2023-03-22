@@ -1,3 +1,18 @@
+window.onload = () => {
+    let topNavUser = document.querySelector(".login-container").childNodes[1];
+    let topNavAuth = document.querySelector(".login-container").childNodes[3];
+    if(localStorage.getItem('user')) {
+        let user = localStorage.getItem('user');
+        topNavUser.innerText = `${user}`
+        console.log
+        topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
+    }
+    else {        
+      topNavUser.innerText = ``
+      topNavAuth.childNodes[0].nodeValue = `Autenticarse`
+    }
+  }
+
 class Poll {
     constructor(root, title) {
         this.root = root;
@@ -41,6 +56,13 @@ class Poll {
             this.root.appendChild(fragment);
         }
     }
+}
+
+function navBarLoggedIn() {  
+    let topNavUser = document.querySelector(".login-container").childNodes[1];
+    let topNavAuth = document.querySelector(".login-container").childNodes[3];
+    topNavUser.innerText = `${user.email}`
+    topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
 }
 
 const p = new Poll(

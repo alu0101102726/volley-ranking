@@ -70,7 +70,7 @@ body {
     display: none;
   }
   
-  #submit, #create-acct-btn, #image-upload {
+  #submit, #create-acct-btn, #image-upload, #logout {
     font-family: 'Kalam', cursive;
     font-size: 20px;
     color: #EEE5E9;
@@ -78,7 +78,7 @@ body {
     margin-top: 5%;
   }
 
-  #submit, #create-acct-btn {    
+  #submit, #create-acct-btn, #logout {    
     background-color: #0583D2;
   }
 

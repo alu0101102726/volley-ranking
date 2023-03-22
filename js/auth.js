@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile  } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { getAuth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile  } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const loginForm = document.querySelector("#main");
 const registerForm = document.querySelector("#create-acct");
@@ -46,8 +46,38 @@ const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
 const signupPasswordIn = document.getElementById("password-signup");
 const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
 const createacctbtn = document.getElementById("create-acct-btn");
+const logoutbtn = document.getElementById("logout");
 
 let email, password, signupEmail, signupUser, signupPassword, confirmSignupEmail, confirmSignUpPassword;
+
+window.onload = () => {
+  auth.onAuthStateChanged(function(user) {
+    let topNavUser = document.querySelector(".login-container").childNodes[1];
+    let topNavAuth = document.querySelector(".login-container").childNodes[3];
+    if (user) {
+      localStorage.setItem('user', user.email)
+      document.querySelector(".not-logged").style = "display: none;"
+      document.querySelector(".logged").style = "display: block;"
+      topNavUser.innerText = `${user.email}`
+      topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
+    } else {
+      window.localStorage.removeItem('user');
+      document.querySelector(".not-logged").style = "display: block;"
+      document.querySelector(".logged").style = "display: none;"
+      topNavUser.innerText = ``
+      topNavAuth.childNodes[0].nodeValue = `Autenticarse`
+    }
+  });
+}
+
+logoutbtn.addEventListener("click", function() {
+  signOut(auth).then(() => {
+    alert("Has cerrado sesión con éxito!")
+  }).catch((error) => {
+    console.log(error)
+  });
+});
+
 
 createacctbtn.addEventListener("click", function() {
   let isVerified = true;
@@ -93,12 +123,8 @@ submitButton.addEventListener("click", function() {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user)
       console.log("Success! Welcome back!");
       window.alert("Bienvenido de nuevo!");
-      let topNavAuth = document.querySelector(".login-container").childNodes[1];
-      topNavAuth.childNodes[0].nodeValue = `${user.email} - Cerrar sesión`
-      //location.href = "index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
