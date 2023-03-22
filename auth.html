@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta name="author" content="ENTREUNOSYCEROS" />
+    <meta name="description" content="Crea tu propia Tier List con un poco de html, css y Javascript para utilizar el local o en un servidor"/>
+    <meta name="keywords" content="tier list, Javascript, HTML, CSS, entreunosyceros"/>
+    <title>Tier List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/topnav.css" />
+    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+  </head>
+  <body>    
+
+    
+    <div class="topnav">
+        <a href="index.html">Semanal</a>
+        <a href="results.html">Resultados</a>
+      <div class="login-container">        
+        <a class="active" href="auth.html">Autenticarse</a>
+      </div>
+    </div>
+    
+    <label class="headerContainer">
+      <h1 class="title">Login</h1>
+    </label>
+
+    <img src="" alt="" id="myimg">
+
+    <div class = "login-container-box">
+
+      <div id= "main">
+          <h1>Sign In</h1>
+          <input id = "email" name="email" type = "text" placeholder = "Email"></input>
+          <input id = "password" name="password" type = "password" placeholder = "Password"></input>
+          <button id = "submit" value="login">Submit</button>
+          <p><span>or</span></p>
+          <button id = "sign-up">Sign Up</button>
+      </div>
+      
+      <div id = "create-acct">
+          <h1>Create an Account</h1>
+          <input id = "user-signup" type = "text" placeholder = "Username *"></input>
+          <input id = "email-signup" type = "text" placeholder = "Email *"></input>
+          <input id = "confirm-email-signup" type = "email" placeholder = "Confirm Email *"></input>
+          <input id = "password-signup" type = "password" placeholder = "Password *"></input>
+          <input id = "confirm-password-signup" type = "password" placeholder = "Confirm Password *"></input>
+          <button id = "create-acct-btn">Create Account</button>
+          <button id = "return-btn">Return to Login</button>
+      </div>
+
+    </div>
+  </body>
+  <!-- JavaScript necesarios-->
+    <script type="module" src="./js/auth.js"></script>
+
+  </html>

@@ -1,0 +1,106 @@
+
+* {box-sizing: border-box;}
+
+body {
+    font-family: 'Kalam', cursive;
+    background-color: #1046a9;
+    background-image: url('../public/blue-lock.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+  }
+  
+  p span {
+    background:#fff;
+    padding:0 10px;
+  }
+
+  input {
+    margin-bottom: 3%;
+    font-family: 'Kalam', cursive;
+  }
+  
+  input:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  input, button {
+    padding: 3%;
+    width: 100%;
+  }
+
+  .login-container-box {
+    background-color: #dddddd;
+    padding: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* horizontal align */
+    width: 40vw;
+    /* vertical align */
+    height: 75vh;
+    margin-bottom: 2%;
+  }
+
+  button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+
+  #create-acct {
+    display: none;
+  }
+  
+  #submit, #create-acct-btn, #image-upload {
+    font-family: 'Kalam', cursive;
+    font-size: 20px;
+    color: #EEE5E9;
+    border: none;
+    margin-top: 5%;
+  }
+
+  #submit, #create-acct-btn {    
+    background-color: #0583D2;
+  }
+
+  #image-upload {
+    background-color: #fb7f7f;
+  }
+  
+  #return-btn {
+    font-family: 'Kalam', cursive;
+    font-size: 20px;
+    background: none;
+    color: #f57319;
+    text-decoration: underline;
+    border: none;
+    margin-top: 3%;
+  }
+  
+  #sign-up {
+    font-family: 'Kalam', cursive;
+    color: #EEE5E9;
+    font-size: 20px;
+    background-color: #f57319;
+    border: none;
+  }
+  
