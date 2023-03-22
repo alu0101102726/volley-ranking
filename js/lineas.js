@@ -25,7 +25,7 @@ rows.forEach((row, index) => {
 
 function modifyJSON(newJSON) {
   let endpoint = "https://volley-ranking-server.onrender.com/poll";
-  let jsonString = JSON.stringify(newJSON);
+  alert("De locos bro, la info está en el server")
   const options = {
     method: "POST",
     headers: {'Content-Type': "application/x-www-form-urlencoded"},
@@ -35,6 +35,7 @@ function modifyJSON(newJSON) {
   options.body = JSON.stringify(newJSON);
 
   fetch(endpoint, options)
+  location.href = "results.html";
 }
 
 function sendInformation() {

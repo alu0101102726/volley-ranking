@@ -3,7 +3,10 @@
 
 body {
     font-family: 'Kalam', cursive;
-    background-color: #7c7c7c;
+    background-color: #1046a9;
+    background-image: url('../public/blue-lock.png');
+    background-position: left;
+    background-repeat: no-repeat;
     margin: 0;
     display: flex;
     width: 100vw;
@@ -35,10 +38,9 @@ body {
   .row {
     display: flex;
     width: 100%;
-    height: 85px;  
+    height: 90px;  
     background-color: black;
     border-style: solid;
-    border-width: 3px;
     border-color: #EEE5E9;
   }
   
@@ -76,24 +78,21 @@ body {
     transition: 0.3s;
   }
   
-  .submit {
+  .submit, .load {
     font-family: 'Kalam', cursive;
     font-size: 20px;
-    width: 20vw;
     color: #EEE5E9;
     border: none;
     margin-top: 0.5%;
-    background-color: #0583D2;
+    background-color: #f57319;
+  }
+
+  .submit {    
+    width: 20vw;
   }
   
   .load {
-    font-family: 'Kalam', cursive;
-    font-size: 20px;
     width: 25vw;
-    color: #EEE5E9;
-    border: none;
-    margin-top: 0.5%;
-    background-color: #0583D2;
   }
   
   
@@ -119,7 +118,7 @@ body {
 
 .poll {
     width: 400px;
-    background-color: #FAF3DD;
+    background-color: #dddddd;
     padding: 1.5rem;
     margin: 50px;
     font-family: sans-serif;
