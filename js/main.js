@@ -2,7 +2,7 @@ class Poll {
     constructor(root, title) {
         this.root = root;
         this.selected = sessionStorage.getItem("poll-selected");
-        this.endpoint = "http://localhost:3000/poll";
+        this.endpoint = "https://volley-ranking-server.onrender.com/poll";
 
         this.root.insertAdjacentHTML("afterbegin", `
             <div class="poll__title">${ title }</div>
