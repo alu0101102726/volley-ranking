@@ -15,6 +15,14 @@ export default{
         {
             name: "Fouad",
             image: "https://drive.google.com/uc?export=view&id=1DS-yLtF5ow7qYoP8XhQtfYXeIz709VQ_"
+        },
+        {
+            name: "Jero",
+            image: "https://drive.google.com/uc?export=view&id=1Jwt9eyYxJsOnPWHUbbjF_UV3oJjgbgnc"
+        },
+        {
+            name: "Leti",
+            image: "https://drive.google.com/uc?export=view&id=1okF2AeWUlxqqdFO9jX2oAho9vlQ_hte7"
         }
     ]
 }
