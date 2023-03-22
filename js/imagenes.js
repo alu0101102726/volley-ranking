@@ -5,6 +5,12 @@ async function getInformation() {
   const usersImpt = await import("../public/users.js")
   const userdata = usersImpt.default.data
   const bank = document.querySelector('#banco');
+  let currentCards = document.querySelectorAll('.card')
+  if(currentCards.length != 0) {
+    currentCards.forEach((card, index) => {
+      card.remove();
+    })
+  }
   userdata.forEach((user, index) => {  
     let image = new Image(100,85);
     image.src = user.image;
