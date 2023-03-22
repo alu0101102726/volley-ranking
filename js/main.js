@@ -6,6 +6,7 @@ class Poll {
 
         this.root.insertAdjacentHTML("afterbegin", `
             <div class="poll__title">${ title }</div>
+            <div id="totalScore" class="poll__title"></div>
         `);
 
         this._refresh();
@@ -21,6 +22,8 @@ class Poll {
 
         for (const option of data) {
             const template = document.createElement("template");
+            const totalVotes = document.getElementById("totalScore");
+            totalVotes.innerText = option.totalVotes;
             const fragment = template.content;
 
             template.innerHTML = `
