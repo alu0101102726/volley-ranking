@@ -1,4 +1,4 @@
-const rows = document.querySelectorAll('.row');
+const rows = document.querySelectorAll('.tier');
 const colors = ['#F8827D', '#FBBF7D', '#FCFD7D', '#87FB7F', '#84C0FE', '#8183FF'];
 let JSONresult = {
   
@@ -10,9 +10,12 @@ const onDragOver = (event) => {
 
 const onDrop = (event) => {
   event.preventDefault();
+  const labels = ["S", "A", "B", "C", "D", "E"];
   const draggedCardId = event.dataTransfer.getData('id');
   const draggedCard = document.getElementById(draggedCardId);
-  event.target.appendChild(draggedCard);
+  const classType = event.target.classList[1];
+  if(labels.includes(classType))
+    event.target.appendChild(draggedCard);
   console.log('Elemento arrastrado');
 }
 
