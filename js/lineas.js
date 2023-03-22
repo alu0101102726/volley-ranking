@@ -24,21 +24,18 @@ rows.forEach((row, index) => {
 })
 
 function modifyJSON(newJSON) {
-  let endpoint = "http://localhost:3000/poll";
+  let endpoint = "https://volley-ranking-server.onrender.com/poll";
   let jsonString = JSON.stringify(newJSON);
   console.log(jsonString);
-  fetch(endpoint, {
-    method: "POST", // <---
-    headers: {
-      "access-control-allow-origin": "*",
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Methods': '*',
-      'Content-Type': 'application/json'
-    },
-    mode: 'cors',
-    body: JSON.stringify(newJSON)
-    
-  })
+  const options = {
+    method: "POST",
+    headers: {'Content-Type': "application/x-www-form-urlencoded"},
+    mode: 'no-cors'
+  };
+
+  options.body = JSON.stringify(newJSON);
+
+  fetch(endpoint, options)
 }
 
 function sendInformation() {
@@ -72,7 +69,5 @@ function sendInformation() {
 
     }
   }) 
-  console.log(JSONresult);   
-
   modifyJSON(JSONresult);
 }

@@ -1,8 +1,6 @@
 
 const cards = document.querySelectorAll('.card');
 const addCard = document.querySelector('#addCard');
-const endpoint = "https://drive.google.com/file/d/1iAkPvyUfTrrNPaL71oNMAIbTm-b5ehn1";
-const fileURL = "https://drive.google.com/file/d/1-F_I_mP30QjWoCWyZhsdJ0Kby0qOSzuk"
 
 async function getInformation() {  
   const usersImpt = await import("../public/users.js")
