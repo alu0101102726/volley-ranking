@@ -1,9 +1,6 @@
-const tier = document.querySelectorAll('.tier');
+const tiers = document.querySelectorAll('.tier');
 const rows = document.querySelectorAll('.row');
 const colors = ['#F8827D', '#FBBF7D', '#FCFD7D', '#87FB7F', '#84C0FE', '#8183FF'];
-let JSONresult = {
-  
-};
 
 const onDragOver = (event) => {
   event.preventDefault();
@@ -20,7 +17,7 @@ const onDrop = (event) => {
   console.log('Elemento arrastrado');
 }
 
-tier.forEach((row, index) => {
+tiers.forEach((row, index) => {
   const label = row.querySelector('.label');
   label.style.backgroundColor = colors[index];
   row.ondragover = onDragOver;
@@ -28,7 +25,7 @@ tier.forEach((row, index) => {
 })
 
 function modifyJSON(newJSON) {
-  let endpoint = "https://volley-ranking-server.onrender.com/poll";
+  let endpoint = "http://localhost:3000/poll";
   alert("De locos bro, la info está en el server")
   const options = {
     method: "POST",
@@ -44,14 +41,14 @@ function modifyJSON(newJSON) {
 }
 
 function sendInformation() {
-  tier.forEach((row, index) => {
+  let JSONresult = {};
+  tiers.forEach((row, index) => {
     let rowInfo = row.childNodes;
     let tier = rowInfo[1].innerText;
-    if(rowInfo[3].childNodes.length != 0) {
-      console.log(rowInfo)
-      for(let i = 3; i < rowInfo.length - 1; i++) {
-        let currentCardImage = rowInfo[i].childNodes[0];
-        console.log(currentCardImage)
+    let rowCards = rowInfo[3].childNodes;
+    if(rowCards.length != 0) {
+      for(let i = 0; i < rowCards.length; i++) {
+        let currentCardImage = rowCards[i].childNodes[0];
         let score = 0;
         switch(tier) {
           case "S":
@@ -74,7 +71,9 @@ function sendInformation() {
           break;
         }
         JSONresult[`${currentCardImage.alt}`] = score;
+        console.log(JSONresult)
       }
+
     }
         
   }) 

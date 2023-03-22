@@ -2,7 +2,7 @@ class Poll {
     constructor(root, title) {
         this.root = root;
         this.selected = sessionStorage.getItem("poll-selected");
-        this.endpoint = "https://volley-ranking-server.onrender.com/poll";
+        this.endpoint = "http://localhost:3000/poll";
 
         this.root.insertAdjacentHTML("afterbegin", `
             <div class="poll__title">${ title }</div>
@@ -23,7 +23,7 @@ class Poll {
         for (const option of data) {
             const template = document.createElement("template");
             const totalVotes = document.getElementById("totalScore");
-            totalVotes.innerText = option.totalVotes;
+            totalVotes.innerText = "Puntos totales: " + option.totalVotes;
             const fragment = template.content;
 
             template.innerHTML = `
