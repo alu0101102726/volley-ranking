@@ -1,4 +1,3 @@
-
 const cards = document.querySelectorAll('.card');
 const addCard = document.querySelector('#addCard');
 
@@ -21,7 +20,7 @@ const createCard = (image) => {
   const card = document.createElement('div');
   card.classList.add('card');
   card.setAttribute('draggable', 'true');
-  card.id = Date.now();
+  card.id = image.alt;
   card.ondragstart = onDragStart;
   card.ondragend = onDragEnd;
   card.onclick = deleteCard;

@@ -2,7 +2,7 @@ class Poll {
     constructor(root, title) {
         this.root = root;
         this.selected = sessionStorage.getItem("poll-selected");
-        this.endpoint = "https://volley-ranking-server.onrender.com/poll";
+        this.endpoint = "http://localhost:3000/poll";
 
         this.root.insertAdjacentHTML("afterbegin", `
             <div class="poll__title">${ title }</div>
@@ -33,25 +33,6 @@ class Poll {
                 </div>
             `;
 
-            if (!this.selected) {
-                fragment.querySelector(".poll__option").addEventListener("click", () => {
-                    fetch(this.endpoint, {
-                        method: "post",
-                        body: `add=${ option.label }`,
-                        mode: 'cors', // <---
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        }
-                    }).then(() => {
-                        this.selected = option.label;
-
-                        sessionStorage.setItem("poll-selected", option.label);
-
-                        this._refresh();
-                    })
-                });
-            }
-
             fragment.querySelector(".poll__option-fill").style.width = `${ option.percentage }%`;
 
             this.root.appendChild(fragment);
@@ -61,5 +42,5 @@ class Poll {
 
 const p = new Poll(
     document.querySelector(".poll"),
-    "Which do you prefer?"
+    "¿Mejor jugador de volley según sus votos? 👀"
 );

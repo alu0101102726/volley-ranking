@@ -24,9 +24,8 @@ rows.forEach((row, index) => {
 })
 
 function modifyJSON(newJSON) {
-  let endpoint = "https://volley-ranking-server.onrender.com/poll";
+  let endpoint = "http://localhost:3000/poll";
   let jsonString = JSON.stringify(newJSON);
-  console.log(jsonString);
   const options = {
     method: "POST",
     headers: {'Content-Type': "application/x-www-form-urlencoded"},
