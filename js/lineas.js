@@ -36,6 +36,7 @@ function modifyJSON(newJSON) {
 
   fetch(endpoint, options)
   location.href = "results.html";
+  document.querySelector('.submit').disabled = true;
 }
 
 function sendInformation() {

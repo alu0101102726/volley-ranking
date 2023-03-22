@@ -11,6 +11,10 @@ export default{
         {
             name: "Cra",
             image: "https://drive.google.com/uc?export=view&id=1_aXrgGrXpaa5je-DKrZdqJnKExdYgkiT"
+        },
+        {
+            name: "Fouad",
+            image: "https://drive.google.com/uc?export=view&id=1DS-yLtF5ow7qYoP8XhQtfYXeIz709VQ_"
         }
     ]
 }
