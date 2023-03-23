@@ -17,7 +17,8 @@
   </head>
   <body>
 
-    <div class="topnav">
+    <div id="mySidenav" class="sidenav">
+      <a onclick="closeNav()"><-</a>
       <a class="active" href="index.html">Semanal</a>
       <a href="results.html">Resultados</a>
       <div class="login-container">     
@@ -25,9 +26,13 @@
         <a href="auth.html">Autenticarse</a>
       </div>
     </div>
+
+    <div class="topnav">
+      <a onclick="openNav()">+</a>
+    </div>
     
     <label class="headerContainer">
-      <h1 class="title">Ranking Volley Mensual</h1>
+      <h1 class="title">Ranking Volley Semanal</h1>
     </label>
 <!--Div anidados para mostrar cada una de las líneas-->
     <div id="board">      
@@ -70,3 +75,4 @@
   <script src="./js/imagenes.js"></script>
   <script src="./js/banco.js"></script>
   <script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
+  <script src="./js/nav.js"></script>

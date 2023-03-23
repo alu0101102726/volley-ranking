@@ -106,7 +106,10 @@ createacctbtn.addEventListener("click", function() {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
       const user = userCredential.user;
-      window.alert("Success! Account created.");
+      window.alert("Success! Account created.");      
+      return userCredential.user.updateProfile({
+        displayName: signupUser
+    })
     })
     .catch((error) => {
       const errorCode = error.code;

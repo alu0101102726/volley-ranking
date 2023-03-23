@@ -14,20 +14,25 @@
       <link rel="stylesheet" type="text/css" href="./css/style.css" />
       <link rel="stylesheet" type="text/css" href="./css/topnav.css" />
       <script type="module" src="./js/main.js" defer></script>
+      <script src="./js/nav.js"></script>
     </head>
     <body>
   
-      <div class="topnav">
-        <a href="index.html">Semanal</a>
-        <a class="active" href="results.html">Resultados</a>
+      <div id="mySidenav" class="sidenav">
+        <a class="active" href="index.html">Semanal</a>
+        <a href="results.html">Resultados</a>
         <div class="login-container">     
           <a href=""></a>       
-          <a href="Auth.html">Autenticarse</a>
+          <a href="auth.html">Autenticarse</a>
         </div>
+      </div>
+  
+      <div class="topnav">
+        <a onclick="openNav()">+</a>
       </div>
       
       <label class="headerContainer">
-        <h1 class="title">Ranking Volley Semanal</h1>
+        <h1 class="title">Resultados Ranking Volley</h1>
       </label>
   
       <div class="poll">

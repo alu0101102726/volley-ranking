@@ -16,15 +16,18 @@
     <link rel="stylesheet" type="text/css" href="./css/login.css" />
   </head>
   <body>    
-
     
-    <div class="topnav">
-        <a href="index.html">Semanal</a>
-        <a href="results.html">Resultados</a>
+    <div id="mySidenav" class="sidenav">
+      <a class="active" href="index.html">Semanal</a>
+      <a href="results.html">Resultados</a>
       <div class="login-container">     
-        <a href=""></a>   
-        <a class="active" href="auth.html">Autenticarse</a>
+        <a href=""></a>       
+        <a href="auth.html">Autenticarse</a>
       </div>
+    </div>
+
+    <div class="topnav">
+      <a onclick="openNav()">+</a>
     </div>
     
     <label class="headerContainer">
@@ -64,5 +67,6 @@
   </body>
   <!-- JavaScript necesarios-->
     <script type="module" src="./js/auth.js"></script>
+    <script src="./js/nav.js"></script>
 
   </html>
