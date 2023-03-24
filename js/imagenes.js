@@ -7,14 +7,20 @@ window.onload = () => {
   if(localStorage.getItem('user')) {
       let user = localStorage.getItem('user');
       topNavUser.innerText = `${user}`
-      console.log
       topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
   }  
   else {        
     topNavUser.innerText = ``
     topNavAuth.childNodes[0].nodeValue = `Autenticarse`
   }
-  console.log("hello")
+  console.log(localStorage.getItem('voted'))
+  if(localStorage.getItem('voted')) {    
+    document.querySelector('.submit').disabled = true;
+  }
+  else {
+    document.querySelector('.submit').disabled = false;
+  }
+
   getInformation();
 }
 

@@ -40,8 +40,9 @@ function modifyJSON(newJSON) {
   options.body = JSON.stringify(newJSON);
 
   fetch(endpoint, options)
-  location.href = "results.html";
+  localStorage.setItem('voted', true);
   document.querySelector('.submit').disabled = true;
+  //location.href = "results.html";
 }
 
 function sendInformation() {
