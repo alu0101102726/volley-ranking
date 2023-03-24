@@ -7,3 +7,7 @@ const onDropCard = (event) => {
 
 bank.ondrop = onDropCard;
 bank.ondragover = (event) => event.preventDefault();
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
