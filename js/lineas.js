@@ -29,7 +29,7 @@ tiers.forEach((row, index) => {
 })
 
 function modifyJSON(newJSON) {
-  let endpoint = "http://localhost:3000/poll";
+  let endpoint = "https://volley-ranking-server.onrender.com/poll";
   alert("De locos bro, la info está en el server")
   const options = {
     method: "POST",
