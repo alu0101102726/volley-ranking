@@ -72,7 +72,7 @@ window.onload = () => {
 
 logoutbtn.addEventListener("click", function() {
   signOut(auth).then(() => {
-    alert("Has cerrado sesión con éxito!")
+    swal("Has cerrado sesión con éxito!")
   }).catch((error) => {
     console.log(error)
   });
@@ -86,19 +86,19 @@ createacctbtn.addEventListener("click", function() {
   signupUser = signupUserIn.value;
   confirmSignupEmail = confirmSignupEmailIn.value;
   if(signupEmail != confirmSignupEmail) {
-      window.alert("Email fields do not match. Try again.")
+      swal("Email fields do not match. Try again.")
       isVerified = false;
   }
 
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
   if(signupPassword != confirmSignUpPassword) {
-      window.alert("Password fields do not match. Try again.")
+      swal("Password fields do not match. Try again.")
       isVerified = false;
   }
   
   if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
-    window.alert("Please fill out all required fields.");
+    swal("Please fill out all required fields.");
     isVerified = false;
   }
   
@@ -106,7 +106,7 @@ createacctbtn.addEventListener("click", function() {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
       const user = userCredential.user;
-      window.alert("Success! Account created.");      
+      swal("Success! Account created.");      
       return userCredential.user.updateProfile({
         displayName: signupUser
     })
@@ -114,7 +114,7 @@ createacctbtn.addEventListener("click", function() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      window.alert("Error occurred. Try again.");
+      swal("Error occurred. Try again.");
     });
   }
 });
@@ -127,12 +127,12 @@ submitButton.addEventListener("click", function() {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("Success! Welcome back!");
-      window.alert("Bienvenido de nuevo!");
+      swal("Bienvenido de nuevo!");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("Error occurred. Try again.");
-      window.alert("Ha ocurrido un error, prueba de nuevo!");
+      swal("Ha ocurrido un error, prueba de nuevo!");
     });
 });

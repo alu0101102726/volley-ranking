@@ -12,7 +12,6 @@ const onDrop = (event) => {
   const draggedCardId = event.dataTransfer.getData('id');
   const draggedCard = document.getElementById(draggedCardId);
   const classType = event.target.classList[1];
-  console.log(event.target.parentElement)
   if(labels.includes(classType))
     event.target.appendChild(draggedCard);
   else if(labels.includes(event.target.parentElement.classList[1]))
@@ -30,7 +29,7 @@ tiers.forEach((row, index) => {
 
 function modifyJSON(newJSON) {
   let endpoint = "https://volley-ranking-server.onrender.com/poll";
-  alert("De locos bro, la info está en el server")
+  swal("De locos bro, la info está en el server")
   const options = {
     method: "POST",
     headers: {'Content-Type': "application/x-www-form-urlencoded"},

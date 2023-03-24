@@ -4,7 +4,6 @@ window.onload = () => {
     if(localStorage.getItem('user')) {
         let user = localStorage.getItem('user');
         topNavUser.innerText = `${user}`
-        console.log
         topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
     }
     else {        
