@@ -43,7 +43,7 @@ function modifyJSON(newJSON) {
   localStorage.setItem('voted', true);
   localStorage.setItem('time-voted', new Date());
   document.querySelector('.submit').disabled = true;
-  //location.href = "results.html";
+  location.href = "results.html";
 }
 
 function sendInformation() {
