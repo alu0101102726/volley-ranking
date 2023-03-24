@@ -12,8 +12,12 @@ const onDrop = (event) => {
   const draggedCardId = event.dataTransfer.getData('id');
   const draggedCard = document.getElementById(draggedCardId);
   const classType = event.target.classList[1];
+  console.log(event.target.parentElement)
   if(labels.includes(classType))
     event.target.appendChild(draggedCard);
+  else if(labels.includes(event.target.parentElement.classList[1]))
+    event.target.parentElement.appendChild(draggedCard);
+
   console.log('Elemento arrastrado');
 }
 

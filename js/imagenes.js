@@ -1,6 +1,23 @@
 const cards = document.querySelectorAll('.card');
 const addCard = document.querySelector('#addCard');
 
+window.onload = () => {
+  let topNavUser = document.querySelector(".login-container").childNodes[1];
+  let topNavAuth = document.querySelector(".login-container").childNodes[3];
+  if(localStorage.getItem('user')) {
+      let user = localStorage.getItem('user');
+      topNavUser.innerText = `${user}`
+      console.log
+      topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
+  }  
+  else {        
+    topNavUser.innerText = ``
+    topNavAuth.childNodes[0].nodeValue = `Autenticarse`
+  }
+  console.log("hello")
+  getInformation();
+}
+
 async function getInformation() {  
   const usersImpt = await import("../public/users.js")
   const userdata = usersImpt.default.data

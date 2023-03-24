@@ -51,8 +51,8 @@
 
 .topnav {
     overflow: hidden;
-    width: 100vw;
-    height: 4.5%;
+    width: fit-content;
+    height: 4%;
     position: fixed;
     top: 0;
     background-color: #333;
