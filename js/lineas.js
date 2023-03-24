@@ -41,6 +41,7 @@ function modifyJSON(newJSON) {
 
   fetch(endpoint, options)
   localStorage.setItem('voted', true);
+  localStorage.setItem('time-voted', new Date());
   document.querySelector('.submit').disabled = true;
   //location.href = "results.html";
 }
