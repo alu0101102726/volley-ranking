@@ -106,10 +106,24 @@ createacctbtn.addEventListener("click", function() {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
       const user = userCredential.user;
-      swal("Success! Account created.");      
-      return userCredential.user.updateProfile({
-        displayName: signupUser
-    })
+      let newJSON = {
+        username: signupUser,
+        email: user.email,
+        votes: null,
+        voted: false,
+        timedVote: null
+      }
+      let endpoint = "http://localhost:3000/register";
+      const options = {
+        method: "POST",
+        headers: {'Content-Type': "application/x-www-form-urlencoded"},
+        mode: 'no-cors'
+      };
+    
+      options.body = JSON.stringify(newJSON);
+    
+      fetch(endpoint, options)   
+      swal("Cuenta creada con éxito!");   
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -125,9 +139,8 @@ submitButton.addEventListener("click", function() {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      const user = userCredential.user;
-      console.log("Success! Welcome back!");
-      swal("Bienvenido de nuevo!");
+      const user = userCredential.user; 
+      swal(`Bienvenido de nuevo ${user.email}!`);
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -13,13 +13,6 @@ window.onload = () => {
     topNavUser.innerText = ``
     topNavAuth.childNodes[0].nodeValue = `Autenticarse`
   }
-  console.log(localStorage.getItem('voted'))
-  if(localStorage.getItem('voted')) {    
-    document.querySelector('.submit').disabled = true;
-  }
-  else {
-    document.querySelector('.submit').disabled = false;
-  }
 
   getInformation();
 }

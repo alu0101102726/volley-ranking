@@ -27,22 +27,62 @@ tiers.forEach((row, index) => {
   row.ondrop = onDrop;
 })
 
-function modifyJSON(newJSON) {
-  let endpoint = "https://volley-ranking-server.onrender.com/poll";
-  swal("De locos bro, la info está en el server")
-  const options = {
-    method: "POST",
-    headers: {'Content-Type': "application/x-www-form-urlencoded"},
-    mode: 'no-cors'
-  };
+async function modifyJSON(newJSON) {
+  let logEndpoint = "https://volley-ranking-server.onrender.com/login";
+  let currentUserData = {}
 
-  options.body = JSON.stringify(newJSON);
+  let finalDate = await fetch("https://volley-ranking-server.onrender.com/votes");
+  let dateData = await finalDate.json();
 
-  fetch(endpoint, options)
-  localStorage.setItem('voted', true);
-  localStorage.setItem('time-voted', new Date());
-  document.querySelector('.submit').disabled = true;
-  location.href = "results.html";
+  let response = await fetch(logEndpoint);
+  let allUsrsData = await response.json();
+  let currentEmail = localStorage.getItem('user').split('@')[0];
+  Object.keys(allUsrsData).forEach(currentFile => {
+    if (currentEmail == currentFile) {
+      currentUserData = allUsrsData[`${currentFile}`]
+    }
+  })
+
+  const voteTime = new Date();
+  if(!currentUserData.voted) {
+    currentUserData.votes = newJSON;
+    currentUserData.voted = true;
+    currentUserData.timedVote = voteTime
+    
+    let endpoint = "https://volley-ranking-server.onrender.com/poll";
+    const options = {
+      method: "POST",
+      headers: {'Content-Type': "application/x-www-form-urlencoded"},
+      mode: 'no-cors'
+    };
+  
+    options.body = JSON.stringify(currentUserData);
+  
+    fetch(endpoint, options)
+    swal("De locos bro, la info está en el server")
+    //location.href = "results.html";
+  }
+  else {
+    let finalDate = new Date(dateData.endVote).getTime();
+    let distance = (finalDate - voteTime) / 1000;
+  
+    let days = Math.floor(distance / (60 * 60 * 24));
+    let hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+    let minutes = Math.floor((distance % (60 * 60)) / (60));
+    let seconds = Math.floor(distance % (60))    
+
+    let dayString = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    let day = voteTime.getDate();
+    let month = voteTime.getMonth() + 1;
+    let year = voteTime.getFullYear();
+
+    let currentDate = `${day}-${month}-${year}`;
+    swal(`Ya su voto fue registrado el ${currentDate}\n 
+          Queda ${dayString} para poder votar de nuevo!`)
+  }
+  
 }
 
 function sendInformation() {
@@ -76,7 +116,6 @@ function sendInformation() {
           break;
         }
         JSONresult[`${currentCardImage.alt}`] = score;
-        console.log(JSONresult)
       }
 
     }
