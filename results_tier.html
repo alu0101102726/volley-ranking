@@ -13,7 +13,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="./css/style.css" />
       <link rel="stylesheet" type="text/css" href="./css/topnav.css" />
-      <script type="module" src="./js/main.js" defer></script>
+      <script type="module" src="./js/results.js" defer></script>
       <script src="./js/nav.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     </head>
@@ -21,8 +21,8 @@
   
       <div id="mySidenav" class="sidenav">
         <a href="index.html">Semanal</a>
-        <a href="results_tier.html">Resultados (Tier)</a>
-        <a class="active" href="results.html">Resultados (%)</a>
+        <a class="active" href="results_tier.html">Resultados (Tier)</a>
+        <a href="results.html">Resultados (%)</a>
         <div class="login-container">     
           <a href=""></a>       
           <a href="auth.html">Autenticarse</a>
@@ -36,9 +36,32 @@
       <label class="headerContainer">
         <h1 class="title">Resultados Ranking Volley</h1>
       </label>
-  
-      <div class="poll">
-  
+      
+      <div id="board">      
+        <div class="tier">
+          <div class="label">S</div>
+          <div class="row S"></div>
+        </div>
+        <div class="tier">
+          <div class="label">A</div>
+          <div class="row A"></div>
+        </div>
+        <div class="tier">
+          <div class="label">B</div>
+          <div class="row B"></div>
+        </div>    
+        <div class="tier">
+          <div class="label">C</div>
+          <div class="row C"></div>
+        </div>
+        <div class="tier">
+          <div class="label">D</div>
+          <div class="row D"></div>
+        </div>
+        <div class="tier">
+          <div class="label">E</div>
+          <div class="row E"></div>
+        </div>
       </div>
     </body>
-    </html>
+  </html>
