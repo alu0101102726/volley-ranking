@@ -28,10 +28,10 @@ tiers.forEach((row, index) => {
 })
 
 async function modifyJSON(newJSON) {
-  let logEndpoint = "http://localhost:3000/login";
+  let logEndpoint = "https://volley-ranking-server.onrender.com/login";
   let currentUserData = {}
 
-  let finalDate = await fetch("http://localhost:3000/votes");
+  let finalDate = await fetch("https://volley-ranking-server.onrender.com/votes");
   let dateData = await finalDate.json();
 
   let response = await fetch(logEndpoint);
@@ -58,7 +58,7 @@ async function modifyJSON(newJSON) {
     currentUserData.voted = true;
     currentUserData.timedVote = voteTime;
     
-    let endpoint = "http://localhost:3000/poll";
+    let endpoint = "https://volley-ranking-server.onrender.com/poll";
     const options = {
       method: "POST",
       headers: {'Content-Type': "application/x-www-form-urlencoded"},
@@ -130,5 +130,18 @@ function sendInformation() {
     }
         
   }) 
+  swal({
+    title: "¿Seguro que quieres registrar los datos?",
+    text: "Una vez mandado no podrás volver a votar",
+    icon: "warning",
+    buttons: true
+  })
+  .then((willSend) => {
+    if (willSend) {
+      modifyJSON(JSONresult);
+    } else {
+      swal("Puedes seguir modificando tus votos");
+    }
+  });
   modifyJSON(JSONresult);
 }

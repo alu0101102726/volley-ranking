@@ -12,7 +12,7 @@ window.onload = () => {
   }
 }
 
-const endpoint = "http://localhost:3000/poll";
+const endpoint = "https://volley-ranking-server.onrender.com/poll";
 const usersImpt = await import("../public/users.js");
 const userdata = usersImpt.default.data;
 const colors = ['#F8827D', '#FBBF7D', '#FCFD7D', '#87FB7F', '#84C0FE', '#8183FF'];
@@ -23,10 +23,10 @@ const response = await fetch(endpoint);
 const data = await response.json();
 
 let currentUserData = {}
-let rsp = await fetch("http://localhost:3000/login");
+let rsp = await fetch("https://volley-ranking-server.onrender.com/login");
 let allUsrsData = await rsp.json();
 
-let pVotes = await fetch("http://localhost:3000/peopleVoted");
+let pVotes = await fetch("https://volley-ranking-server.onrender.com/peopleVoted");
 let voteInfo = await pVotes.json();
 let totalVotes = voteInfo.totalVotes;
 let totalPeopleVote = voteInfo.totalPeopleVoted;

@@ -114,7 +114,7 @@ createacctbtn.addEventListener("click", function() {
         timedVote: null,
         peopleVoted: 0
       }
-      let endpoint = "http://localhost:3000/register";
+      let endpoint = "https://volley-ranking-server.onrender.com/register";
       const options = {
         method: "POST",
         headers: {'Content-Type': "application/x-www-form-urlencoded"},
