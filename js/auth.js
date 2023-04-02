@@ -72,7 +72,7 @@ window.onload = () => {
 
 logoutbtn.addEventListener("click", function() {
   signOut(auth).then(() => {
-    swal("Has cerrado sesión con éxito!")
+    swal("Has cerrado sesión con éxito!", "Hasta luego!", "success")
   }).catch((error) => {
     console.log(error)
   });
@@ -86,19 +86,19 @@ createacctbtn.addEventListener("click", function() {
   signupUser = signupUserIn.value;
   confirmSignupEmail = confirmSignupEmailIn.value;
   if(signupEmail != confirmSignupEmail) {
-      swal("Email fields do not match. Try again.")
+      swal("Los campos del email no coinciden", "Prueba de nuevo", "warning")
       isVerified = false;
   }
 
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
   if(signupPassword != confirmSignUpPassword) {
-      swal("Password fields do not match. Try again.")
+      swal("Los campos de contraseña no coinciden", "Prueba de nuevo", "warning")
       isVerified = false;
   }
   
   if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
-    swal("Please fill out all required fields.");
+    swal("Rellena todos los campos!", "Prueba de nuevo", "warning");
     isVerified = false;
   }
   
@@ -111,7 +111,8 @@ createacctbtn.addEventListener("click", function() {
         email: user.email,
         votes: null,
         voted: false,
-        timedVote: null
+        timedVote: null,
+        peopleVoted: 0
       }
       let endpoint = "http://localhost:3000/register";
       const options = {
@@ -123,12 +124,12 @@ createacctbtn.addEventListener("click", function() {
       options.body = JSON.stringify(newJSON);
     
       fetch(endpoint, options)   
-      swal("Cuenta creada con éxito!");   
+      swal("Cuenta creada con éxito!", "Enhorabuena!", "success");   
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      swal("Error occurred. Try again.");
+      swal("Ha ocurrido un error", "Inténtalo de nuevo", "error");
     });
   }
 });
@@ -140,12 +141,11 @@ submitButton.addEventListener("click", function() {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user; 
-      swal(`Bienvenido de nuevo ${user.email}!`);
+      swal(`Bienvenido de nuevo`, `${user.email}!`, "info");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Error occurred. Try again.");
-      swal("Ha ocurrido un error, prueba de nuevo!");
+      swal("Ha ocurrido un error", "Inténtalo de nuevo", "error");
     });
 });

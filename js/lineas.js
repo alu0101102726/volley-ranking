@@ -28,28 +28,37 @@ tiers.forEach((row, index) => {
 })
 
 async function modifyJSON(newJSON) {
-  let logEndpoint = "https://volley-ranking-server.onrender.com/login";
+  let logEndpoint = "http://localhost:3000/login";
   let currentUserData = {}
 
-  let finalDate = await fetch("https://volley-ranking-server.onrender.com/votes");
+  let finalDate = await fetch("http://localhost:3000/votes");
   let dateData = await finalDate.json();
 
   let response = await fetch(logEndpoint);
   let allUsrsData = await response.json();
+  let numberOfPeopleVote = 0;
+
   let currentEmail = localStorage.getItem('user').split('@')[0];
   Object.keys(allUsrsData).forEach(currentFile => {
     if (currentEmail == currentFile) {
-      currentUserData = allUsrsData[`${currentFile}`]
+      currentUserData = allUsrsData[currentFile]
+      if(!currentUserData.voted) {
+        numberOfPeopleVote++;
+      }
     }
+    if(allUsrsData[currentFile].voted) {
+      numberOfPeopleVote++;
+    } 
   })
-
+  
+  currentUserData.peopleVoted = numberOfPeopleVote;
   const voteTime = new Date();
   if(!currentUserData.voted) {
     currentUserData.votes = newJSON;
     currentUserData.voted = true;
-    currentUserData.timedVote = voteTime
+    currentUserData.timedVote = voteTime;
     
-    let endpoint = "https://volley-ranking-server.onrender.com/poll";
+    let endpoint = "http://localhost:3000/poll";
     const options = {
       method: "POST",
       headers: {'Content-Type': "application/x-www-form-urlencoded"},
@@ -59,7 +68,7 @@ async function modifyJSON(newJSON) {
     options.body = JSON.stringify(currentUserData);
   
     fetch(endpoint, options)
-    swal("De locos bro, la info está en el server")
+    swal("De locos bro, la info está en el server", "success")
     //location.href = "results.html";
   }
   else {
@@ -79,8 +88,8 @@ async function modifyJSON(newJSON) {
     let year = voteTime.getFullYear();
 
     let currentDate = `${day}-${month}-${year}`;
-    swal(`Ya su voto fue registrado el ${currentDate}\n 
-          Queda ${dayString} para poder votar de nuevo!`)
+    swal(`Ya su voto fue registrado el ${currentDate}\n`,
+    `Queda ${dayString} para poder votar de nuevo!`, "info")
   }
   
 }

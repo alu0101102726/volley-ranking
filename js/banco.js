@@ -11,9 +11,9 @@ bank.ondragover = (event) => event.preventDefault();
 async function getTimeDifference() {
   let currentUserData = {}
   
-  let finalDate = await fetch("https://volley-ranking-server.onrender.com/votes");
+  let finalDate = await fetch("http://localhost:3000/votes");
   let dateData = await finalDate.json();
-  let response = await fetch("https://volley-ranking-server.onrender.com/login");
+  let response = await fetch("http://localhost:3000/login");
   let allUsrsData = await response.json();
   let currentEmail = localStorage.getItem('user').split('@')[0];
   Object.keys(allUsrsData).forEach(currentFile => {
@@ -49,14 +49,14 @@ async function getTimeDifference() {
       currentUserData.votes = null;
       currentUserData.timedVote = "";
     
-      fetch("https://volley-ranking-server.onrender.com/register", {
+      fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {'Content-Type': "application/x-www-form-urlencoded"},
         mode: 'no-cors',
         body: JSON.stringify(currentUserData)
       })
     
-      fetch("https://volley-ranking-server.onrender.com/votes")
+      fetch("http://localhost:3000/votes")
       timeDiv.innerHTML = "ACABADO";
     }
   }, 1000);

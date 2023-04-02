@@ -6,8 +6,8 @@ function openNav() {
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
-
+  
   function off() {
-    document.getElementById("overlay").style.display = "none";
-  }
+      document.getElementById("overlay").style.display = "none";
+    }
   

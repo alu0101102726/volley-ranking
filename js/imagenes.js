@@ -1,21 +1,33 @@
-const cards = document.querySelectorAll('.card');
-const addCard = document.querySelector('#addCard');
-
 window.onload = () => {
   let topNavUser = document.querySelector(".login-container").childNodes[1];
   let topNavAuth = document.querySelector(".login-container").childNodes[3];
+  let overlay = document.querySelector("#overlay");
+  let iframeDiv = document.querySelector(".divText");
+
   if(localStorage.getItem('user')) {
       let user = localStorage.getItem('user');
+      overlay.style = "display: none"
       topNavUser.innerText = `${user}`
       topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
   }  
   else {        
     topNavUser.innerText = ``
     topNavAuth.childNodes[0].nodeValue = `Autenticarse`
+    let iframe = document.createElement('iframe');
+    iframe.onload = function() {
+        console.log("iframe charged")
+    }; // before setting 'src'
+    iframe.src = 'https://drive.google.com/file/d/1VZVxhF6YfYbyOoO68m4OWQglS73gNEAA/preview'; 
+    iframe.width = "100%";
+    iframe.height = "480";
+    iframeDiv.appendChild(iframe);
   }
-
+  
   getInformation();
 }
+
+const cards = document.querySelectorAll('.card');
+const addCard = document.querySelector('#addCard');
 
 async function getInformation() {  
   const usersImpt = await import("../public/users.js")
