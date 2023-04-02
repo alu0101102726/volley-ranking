@@ -127,9 +127,8 @@ createacctbtn.addEventListener("click", function() {
       swal("Cuenta creada con éxito!", "Enhorabuena!", "success");   
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      swal("Ha ocurrido un error", "Inténtalo de nuevo", "error");
+      swal("Ha ocurrido un error", `${errorMessage}`, "error");
     });
   }
 });
@@ -144,8 +143,7 @@ submitButton.addEventListener("click", function() {
       swal(`Bienvenido de nuevo`, `${user.email}!`, "info");
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      swal("Ha ocurrido un error", "Inténtalo de nuevo", "error");
+      swal("Ha ocurrido un error", `${errorMessage}`, "error");
     });
 });

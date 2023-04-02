@@ -27,7 +27,9 @@ let rsp = await fetch("http://localhost:3000/login");
 let allUsrsData = await rsp.json();
 
 let pVotes = await fetch("http://localhost:3000/peopleVoted");
-let totalPeopleVote = await pVotes.json();
+let voteInfo = await pVotes.json();
+let totalVotes = voteInfo.totalVotes;
+let totalPeopleVote = voteInfo.totalPeopleVoted;
 
 function compare( a, b ) {
     if ( a.percentage <= b.percentage ){
@@ -43,7 +45,7 @@ tiers.forEach((row, index) => {
     const label = row.querySelector('.label');
     label.style.backgroundColor = colors[index];
   })
-let totalVotes = data[0].totalVotes;
+
 let limitLabel = [{}]
 let allVotes = []
 
@@ -62,7 +64,7 @@ data.sort((a,b) => (a.percentage > b.percentage) ? -1 : ((b.percentage <= a.perc
 
 for (const option of data) {
     let i = 0;
-    option.value = ((option.percentage * option.totalVotes) / 100).toFixed(0);
+    option.value = ((option.percentage * totalVotes) / 100).toFixed(0);
     while( i >= 0 ) {
       if(option.value <= limitLabel[i].value) {
         let user = option.label;
