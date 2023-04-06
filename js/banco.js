@@ -1,4 +1,5 @@
 const bank = document.querySelector('#banco');
+let previousInfo = [];
 
 const onDropCard = (event) => {
   const id = event.dataTransfer.getData('id');
@@ -48,6 +49,7 @@ async function getTimeDifference() {
       currentUserData.voted = false;
       currentUserData.votes = null;
       currentUserData.timedVote = "";
+      previousInfo.push(dateData.previousData)
     
       fetch("https://volley-ranking-server.onrender.com/register", {
         method: "POST",

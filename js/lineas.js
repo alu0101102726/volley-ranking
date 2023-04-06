@@ -151,5 +151,4 @@ function sendInformation() {
       swal("Puedes seguir modificando tus votos");
     }
   });
-  modifyJSON(JSONresult);
 }
