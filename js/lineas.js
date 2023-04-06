@@ -88,8 +88,10 @@ async function modifyJSON(newJSON) {
     let year = voteTime.getFullYear();
 
     let currentDate = `${day}-${month}-${year}`;
-    swal(`Ya su voto fue registrado el ${currentDate}\n`,
-    `Queda ${dayString} para poder votar de nuevo!`, "info")
+    if(!dateData.changed) {
+      swal(`Ya su voto fue registrado el ${currentDate}\n`,
+      `Queda ${dayString} para poder votar de nuevo!`, "info")
+    }
   }
   
 }

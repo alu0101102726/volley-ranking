@@ -56,6 +56,8 @@ async function getTimeDifference() {
         body: JSON.stringify(currentUserData)
       })
     
+      swal(`Ya se puede volver a votar!\n`,
+      `Elija a sus candidatos :)`, "info")
       fetch("https://volley-ranking-server.onrender.com/votes")
       timeDiv.innerHTML = "ACABADO";
     }
