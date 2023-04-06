@@ -37,61 +37,67 @@ async function modifyJSON(newJSON) {
   let response = await fetch(logEndpoint);
   let allUsrsData = await response.json();
   let numberOfPeopleVote = 0;
+  let currentEmail = "";
 
-  let currentEmail = localStorage.getItem('user').split('@')[0];
-  Object.keys(allUsrsData).forEach(currentFile => {
-    if (currentEmail == currentFile) {
-      currentUserData = allUsrsData[currentFile]
-      if(!currentUserData.voted) {
+  if(localStorage.getItem('user')) {
+    currentEmail = localStorage.getItem('user').split('@')[0];
+    Object.keys(allUsrsData).forEach(currentFile => {
+      if (currentEmail == currentFile) {
+        currentUserData = allUsrsData[currentFile]
+        if(!currentUserData.voted) {
+          numberOfPeopleVote++;
+        }
+      }
+      if(allUsrsData[currentFile].voted) {
         numberOfPeopleVote++;
+      } 
+    })
+    
+    currentUserData.peopleVoted = numberOfPeopleVote;
+    const voteTime = new Date();
+    if(!currentUserData.voted) {
+      currentUserData.votes = newJSON;
+      currentUserData.voted = true;
+      currentUserData.timedVote = voteTime;
+      
+      let endpoint = "https://volley-ranking-server.onrender.com/poll";
+      const options = {
+        method: "POST",
+        headers: {'Content-Type': "application/x-www-form-urlencoded"},
+        mode: 'no-cors'
+      };
+    
+      options.body = JSON.stringify(currentUserData);
+    
+      fetch(endpoint, options)
+      swal("De locos bro, la info está en el server",`Puedes verla en la pestaña de resultados!`, "success")
+    }
+    else {
+      let finalDate = new Date(dateData.endVote).getTime();
+      let distance = (finalDate - voteTime) / 1000;
+    
+      let days = Math.floor(distance / (60 * 60 * 24));
+      let hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+      let minutes = Math.floor((distance % (60 * 60)) / (60));
+      let seconds = Math.floor(distance % (60))    
+  
+      let dayString = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+  
+      let day = voteTime.getDate();
+      let month = voteTime.getMonth() + 1;
+      let year = voteTime.getFullYear();
+  
+      let currentDate = `${day}-${month}-${year}`;
+      if(!dateData.changed) {
+        swal(`Ya su voto fue registrado el ${currentDate}\n`,
+        `Queda ${dayString} para poder votar de nuevo!`, "info")
       }
     }
-    if(allUsrsData[currentFile].voted) {
-      numberOfPeopleVote++;
-    } 
-  })
-  
-  currentUserData.peopleVoted = numberOfPeopleVote;
-  const voteTime = new Date();
-  if(!currentUserData.voted) {
-    currentUserData.votes = newJSON;
-    currentUserData.voted = true;
-    currentUserData.timedVote = voteTime;
-    
-    let endpoint = "https://volley-ranking-server.onrender.com/poll";
-    const options = {
-      method: "POST",
-      headers: {'Content-Type': "application/x-www-form-urlencoded"},
-      mode: 'no-cors'
-    };
-  
-    options.body = JSON.stringify(currentUserData);
-  
-    fetch(endpoint, options)
-    swal("De locos bro, la info está en el server", "success")
-    //location.href = "results.html";
   }
+
   else {
-    let finalDate = new Date(dateData.endVote).getTime();
-    let distance = (finalDate - voteTime) / 1000;
-  
-    let days = Math.floor(distance / (60 * 60 * 24));
-    let hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
-    let minutes = Math.floor((distance % (60 * 60)) / (60));
-    let seconds = Math.floor(distance % (60))    
-
-    let dayString = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-
-    let day = voteTime.getDate();
-    let month = voteTime.getMonth() + 1;
-    let year = voteTime.getFullYear();
-
-    let currentDate = `${day}-${month}-${year}`;
-    if(!dateData.changed) {
-      swal(`Ya su voto fue registrado el ${currentDate}\n`,
-      `Queda ${dayString} para poder votar de nuevo!`, "info")
-    }
+    swal("Para poder votar necesitas autenticarte",`Vete a la pestaña de autenticación!`, "error")
   }
   
 }
