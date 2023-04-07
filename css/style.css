@@ -84,6 +84,7 @@ body {
     border-width: 5px;
     border-color: #EEE5E9;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   button:hover {
@@ -98,8 +99,9 @@ body {
     width: fit-content;
     color: #EEE5E9;
     border: none;
-    margin-top: 0.5%;
+    margin-top: 5%;
     background-color: #f57319;
+    margin-bottom: 5%;
   }  
   
   @media (max-width: 700px) {
