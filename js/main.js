@@ -28,16 +28,22 @@ class Poll {
 
     async _refresh() {
         const response = await fetch(this.endpoint);
-        const data = await response.json();
+        const data = await response.json();        
+        data.sort((a,b) => (a.totalVotes > b.totalVotes) ? -1 : ((b.totalVotes <= a.totalVotes) ? 1 : 0))
 
         this.root.querySelectorAll(".poll__option").forEach(option => {
             option.remove();
         });
 
+        const template = document.createElement("template");
+        const totalVotesDiv = document.getElementById("totalScore");
+        let totalVotes = 0;
         for (const option of data) {
-            const template = document.createElement("template");
-            const totalVotes = document.getElementById("totalScore");
-            totalVotes.innerText = "Puntos totales: " + option.totalVotes;
+            totalVotes += option.totalVotes;
+        }
+        totalVotesDiv.innerText = "Puntos totales: " + totalVotes;
+
+        for (const option of data) {
             const fragment = template.content;
 
             template.innerHTML = `

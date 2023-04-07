@@ -18,6 +18,7 @@ const userdata = usersImpt.default.data;
 const colors = ['#F8827D', '#FBBF7D', '#FCFD7D', '#87FB7F', '#84C0FE', '#8183FF'];
 const tiers = document.querySelectorAll('.tier');
 const labels = ["S", "A", "B", "C", "D", "E"];
+const MAXTIERVALUE = 6;
 
 const response = await fetch(endpoint);
 const data = await response.json();
@@ -48,25 +49,30 @@ tiers.forEach((row, index) => {
 
 let limitLabel = [{}]
 let allVotes = []
+let maxRank = totalPeopleVote * MAXTIERVALUE;
+let currentMax = 0
 
 let ranking = (data.length / totalPeopleVote).toFixed(0);
 let remaider = data.length % totalPeopleVote;
 
 for( let i = 0; i < labels.length; i++ ) {
-    limitLabel[i] = {
-        label: labels[labels.length - i - 1],
-        value: i + 1
-    }
+  limitLabel[i] = {
+      label: labels[labels.length - i - 1],
+      value: currentMax + totalPeopleVote
+  }
+  currentMax = currentMax + totalPeopleVote
 }
 
 let labelIndex = limitLabel.length - 1;
-data.sort((a,b) => (a.percentage > b.percentage) ? -1 : ((b.percentage <= a.percentage) ? 1 : 0))
+data.sort((a,b) => (a.totalVotes > b.totalVotes) ? -1 : ((b.totalVotes <= a.totalVotes) ? 1 : 0))
 
-for (const option of data) {
+if (totalVotes != 0) {
+  for (const option of data) {
     let i = 0;
-    option.value = ((option.percentage * totalVotes) / 100).toFixed(0);
+    let userVotes = data.find(element => element.label == option.label).totalVotes 
+    console.log(userVotes)
     while( i >= 0 ) {
-      if(option.value <= limitLabel[i].value) {
+      if(userVotes < limitLabel[i].value) {
         let user = option.label;
         let userInfo = userdata.find(element => element.name == user)
 
@@ -85,4 +91,5 @@ for (const option of data) {
       }
       i++; 
     }
+  }
 }
