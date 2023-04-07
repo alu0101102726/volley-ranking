@@ -51,13 +51,13 @@ body {
 
   .login-container-box {
     background-color: #dddddd;
-    padding: 5%;
+    padding-right: 3%;
+    padding-left: 3%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     /* horizontal align */
-    width: 40vw;
+    width: 50vw;
     /* vertical align */
-    height: 75vh;
-    margin-bottom: 2%;
+    height: 50vh;
   }
 
   button:hover {

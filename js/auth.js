@@ -13,11 +13,13 @@ let show = "display: block;";
 registerFormBtn.addEventListener("click", ( )=>{
     loginForm.style = hide;
     registerForm.style = show;
+    document.querySelector(".login-container-box").style = "height: 65vh;"
 })
 
 loginFormBtn.addEventListener("click", ( )=>{
     loginForm.style = show;
     registerForm.style = hide;
+    document.querySelector(".login-container-box").style = "height: 50vh;"
 })
 
 // Your web app's Firebase configuration
