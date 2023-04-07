@@ -62,6 +62,7 @@ window.onload = () => {
       document.querySelector(".logged").style = "display: block;"
       topNavUser.innerText = `${user.email}`
       topNavAuth.childNodes[0].nodeValue = `Cerrar sesión`
+      document.querySelector(".logged").style = "height: 15vh;"
     } else {
       window.localStorage.removeItem('user');
       document.querySelector(".not-logged").style = "display: block;"
