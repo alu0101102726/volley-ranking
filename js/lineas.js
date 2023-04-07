@@ -74,6 +74,7 @@ async function modifyJSON(newJSON) {
     }
     else {
       let finalDate = new Date(dateData.endVote).getTime();
+      let voteDate = new Date(currentUserData.timedVote);
       let distance = (finalDate - voteTime) / 1000;
     
       let days = Math.floor(distance / (60 * 60 * 24));
@@ -84,9 +85,9 @@ async function modifyJSON(newJSON) {
       let dayString = days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
   
-      let day = voteTime.getDate();
-      let month = voteTime.getMonth() + 1;
-      let year = voteTime.getFullYear();
+      let day = voteDate.getDate();
+      let month = voteDate.getMonth() + 1;
+      let year = voteDate.getFullYear();
   
       let currentDate = `${day}-${month}-${year}`;
       if(!dateData.changed) {
