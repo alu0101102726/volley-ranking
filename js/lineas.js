@@ -59,6 +59,7 @@ async function modifyJSON(newJSON) {
       currentUserData.votes = newJSON;
       currentUserData.voted = true;
       currentUserData.timedVote = voteTime;
+      currentUserData.email = currentEmail;
       
       let endpoint = "https://volley-ranking-server.onrender.com/poll";
       const options = {

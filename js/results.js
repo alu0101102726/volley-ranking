@@ -72,7 +72,7 @@ if (totalVotes != 0) {
     let userVotes = data.find(element => element.label == option.label).totalVotes 
     console.log(userVotes)
     while( i >= 0 ) {
-      if(userVotes < limitLabel[i].value) {
+      if(userVotes <= limitLabel[i].value) {
         let user = option.label;
         let userInfo = userdata.find(element => element.name == user)
 
